@@ -28,10 +28,9 @@ export function ProductItem({ coffee }: ProductItemProps) {
     setQuantity(value);
   }
 
-  const price = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  }).format(coffee.price ? coffee.price / 100 : 0);
+  const price = new Intl.NumberFormat("pt-BR").format(
+    coffee.price ? coffee.price / 100 : 0
+  );
 
   return (
     <ProductItemWrapper>
