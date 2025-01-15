@@ -1,3 +1,10 @@
+import { Showcase } from "./components/Showcase";
+import { HomeContainer } from "./styles";
+
 export function HomePage() {
-  return <main>Home</main>;
+  return (
+    <HomeContainer>
+      <Showcase />
+    </HomeContainer>
+  );
 }
