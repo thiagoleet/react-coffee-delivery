@@ -76,6 +76,12 @@ export const ProductItemFooter = styled.footer`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 768px) {
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 export const ProductCartButton = styled.button`
@@ -93,6 +99,11 @@ export const ProductCartButton = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme["purple-base"]};
   }
+
+  @media screen and (max-width: 768px) {
+    grid-column: 2 / span 2;
+    width: 100%;
+  }
 `;
 
 export const ProductItemPriceWrapper = styled.div`
@@ -101,6 +112,12 @@ export const ProductItemPriceWrapper = styled.div`
   align-items: baseline;
   justify-content: baseline;
   gap: 0.25rem;
+
+  @media screen and (max-width: 768px) {
+    grid-column: 1 / span 3;
+    justify-content: center;
+    padding-bottom: 1rem;
+  }
 `;
 
 export const ProductItemPriceCurrency = styled.span`
