@@ -6,6 +6,9 @@ import {
   ProductItemFigure,
   ProductItemFooter,
   ProductItemHeader,
+  ProductItemPriceCurrency,
+  ProductItemPriceValue,
+  ProductItemPriceWrapper,
   ProductItemTag,
   ProductItemTags,
   ProductItemTitle,
@@ -17,10 +20,10 @@ export function ProductItem() {
     <ProductItemWrapper>
       <ProductItemContent>
         <ProductItemHeader>
-          <ProductItemFigure>Imagem</ProductItemFigure>
+          <ProductItemFigure>
+            <img src="/expresso.png" />
+          </ProductItemFigure>
           <ProductItemTags>
-            <ProductItemTag>tradicional</ProductItemTag>
-            <ProductItemTag>tradicional</ProductItemTag>
             <ProductItemTag>tradicional</ProductItemTag>
           </ProductItemTags>
         </ProductItemHeader>
@@ -30,10 +33,10 @@ export function ProductItem() {
         </ProductItemDescription>
 
         <ProductItemFooter>
-          <div>
-            <span>R$</span>
-            <span>9,99</span>
-          </div>
+          <ProductItemPriceWrapper>
+            <ProductItemPriceCurrency>R$</ProductItemPriceCurrency>
+            <ProductItemPriceValue>9,99</ProductItemPriceValue>
+          </ProductItemPriceWrapper>
           <QuantityInput />
           <CartButton />
         </ProductItemFooter>

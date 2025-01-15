@@ -1,16 +1,41 @@
 import styled from "styled-components";
 
-export const ProductItemWrapper = styled.article``;
+export const ProductItemWrapper = styled.article`
+  margin-top: 50px;
+`;
 
 export const ProductItemContent = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  background-color: ${({ theme }) => theme["base-card"]};
+  padding: 1.5rem 2rem;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 `;
 
-export const ProductItemHeader = styled.header``;
+export const ProductItemHeader = styled.header`
+  display: flex;
+  flex-direction: column;
+`;
 
-export const ProductItemFigure = styled.figure``;
+export const ProductItemFigure = styled.figure`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex: 1;
+
+  img {
+    margin: 0 auto;
+    position: absolute;
+    top: -50px;
+    width: 100px;
+    height: 100px;
+  }
+`;
 
 export const ProductItemTags = styled.div`
   display: flex;
@@ -43,6 +68,7 @@ export const ProductItemDescription = styled.p`
   font-size: 0.8rem;
   font-weight: 300;
   margin-bottom: 1rem;
+  text-align: center;
 `;
 
 export const ProductItemFooter = styled.footer`
@@ -54,7 +80,7 @@ export const ProductItemFooter = styled.footer`
 
 export const ProductCartButton = styled.button`
   background-color: ${({ theme }) => theme["purple-dark"]};
-  color: ${({ theme }) => theme["white"]};
+  color: ${({ theme }) => theme["base-card"]};
   cursor: pointer;
   border: 0;
   border-radius: 8px;
@@ -67,4 +93,23 @@ export const ProductCartButton = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme["purple-base"]};
   }
+`;
+
+export const ProductItemPriceWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: baseline;
+  gap: 0.25rem;
+`;
+
+export const ProductItemPriceCurrency = styled.span`
+  font-size: 0.8rem;
+  color: ${({ theme }) => theme["base-text"]};
+`;
+
+export const ProductItemPriceValue = styled.span`
+  font-size: 1rem;
+  font-weight: bold;
+  color: ${({ theme }) => theme["base-text"]};
 `;
