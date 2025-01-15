@@ -51,11 +51,11 @@ export const coffees: Coffee[] = [
     tags: ["tradicional", "com leite"],
   },
   {
-    id: "cappuccino",
+    id: "capuccino",
     name: "Cappuccino",
     description:
       "Bebida com canela feita de doses iguais de café, leite e espuma",
-    image: "/cappuccino.png",
+    image: "/capuccino.png",
     price: 999,
     tags: ["tradicional", "com leite"],
   },
@@ -69,10 +69,10 @@ export const coffees: Coffee[] = [
     tags: ["tradicional", "com leite"],
   },
   {
-    id: "mocaccino",
+    id: "mochaccino",
     name: "Mocaccino",
     description: "Café expresso com calda de chocolate, pouco leite e espuma",
-    image: "/mocaccino.png",
+    image: "/mochaccino.png",
     price: 999,
     tags: ["tradicional", "com leite"],
   },

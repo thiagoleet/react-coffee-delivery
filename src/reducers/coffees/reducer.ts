@@ -9,7 +9,7 @@ export interface CoffeesState {
 export function coffeesReducer(state: CoffeesState, action: any): CoffeesState {
   switch (action.type) {
     case ActionTypes.SET_COFFEES:
-      return { ...state, coffees: action.payload };
+      return { ...state, coffees: action.payload.coffees };
     default:
       return state;
   }

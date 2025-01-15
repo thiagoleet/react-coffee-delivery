@@ -1,4 +1,5 @@
 import { QuantityInput } from "../../../../components/QuantityInput";
+import { Coffee } from "../../../../models/Coffee";
 import { CartButton } from "./CartButton";
 import {
   ProductItemContent,
@@ -15,27 +16,39 @@ import {
   ProductItemWrapper,
 } from "./styles";
 
-export function ProductItem() {
+interface ProductItemProps {
+  coffee: Coffee;
+}
+
+export function ProductItem({ coffee }: ProductItemProps) {
+  const price = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(coffee.price ? coffee.price / 100 : 0);
+
   return (
     <ProductItemWrapper>
       <ProductItemContent>
         <ProductItemHeader>
           <ProductItemFigure>
-            <img src="/expresso.png" />
+            <img
+              src={coffee.image}
+              alt={coffee.description}
+            />
           </ProductItemFigure>
           <ProductItemTags>
-            <ProductItemTag>tradicional</ProductItemTag>
+            {coffee.tags.map((tag) => (
+              <ProductItemTag key={tag}>{tag}</ProductItemTag>
+            ))}
           </ProductItemTags>
         </ProductItemHeader>
-        <ProductItemTitle>Expresso Tradicional</ProductItemTitle>
-        <ProductItemDescription>
-          O tradicional café feito com água quente e grãos moídos
-        </ProductItemDescription>
+        <ProductItemTitle>{coffee.name}</ProductItemTitle>
+        <ProductItemDescription>{coffee.description}</ProductItemDescription>
 
         <ProductItemFooter>
           <ProductItemPriceWrapper>
             <ProductItemPriceCurrency>R$</ProductItemPriceCurrency>
-            <ProductItemPriceValue>9,99</ProductItemPriceValue>
+            <ProductItemPriceValue>{price}</ProductItemPriceValue>
           </ProductItemPriceWrapper>
           <QuantityInput />
           <CartButton />
