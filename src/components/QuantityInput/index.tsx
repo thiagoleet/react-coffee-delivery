@@ -6,7 +6,12 @@ const MIN_QUANTITY = 1;
 const STEP = 1;
 const DEFAULT_VALUE = 1;
 
-export function QuantityInput() {
+interface QuantityInputProps {
+  onUpdate: (value: number) => void;
+  value: number;
+}
+
+export function QuantityInput({ onUpdate, value }: QuantityInputProps) {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   function handleDecrease() {
@@ -14,6 +19,7 @@ export function QuantityInput() {
       let value = parseInt(inputRef.current.value) - 1;
       value = value < MIN_QUANTITY ? MIN_QUANTITY : value;
       inputRef.current.value = String(value);
+      onUpdate(value);
     }
   }
 
@@ -22,8 +28,15 @@ export function QuantityInput() {
       let value = parseInt(inputRef.current.value) + 1;
       value = value > MAX_QUANTITY ? MAX_QUANTITY : value;
       inputRef.current.value = String(value);
+      onUpdate(value);
     }
   }
+
+  React.useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.value = String(value);
+    }
+  }, [value]);
 
   return (
     <QuantityInputWrapper>
