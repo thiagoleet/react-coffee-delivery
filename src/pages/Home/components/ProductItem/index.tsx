@@ -1,3 +1,4 @@
+import React from "react";
 import { QuantityInput } from "../../../../components/QuantityInput";
 import { Coffee } from "../../../../models/Coffee";
 import { CartButton } from "./CartButton";
@@ -21,6 +22,12 @@ interface ProductItemProps {
 }
 
 export function ProductItem({ coffee }: ProductItemProps) {
+  const [quantity, setQuantity] = React.useState(1);
+
+  function handleUpdateQuantity(value: number) {
+    setQuantity(value);
+  }
+
   const price = new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
@@ -50,7 +57,10 @@ export function ProductItem({ coffee }: ProductItemProps) {
             <ProductItemPriceCurrency>R$</ProductItemPriceCurrency>
             <ProductItemPriceValue>{price}</ProductItemPriceValue>
           </ProductItemPriceWrapper>
-          <QuantityInput />
+          <QuantityInput
+            value={quantity}
+            onUpdate={handleUpdateQuantity}
+          />
           <CartButton />
         </ProductItemFooter>
       </ProductItemContent>
