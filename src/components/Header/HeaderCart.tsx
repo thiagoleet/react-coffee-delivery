@@ -1,9 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import { ShoppingCart } from "@phosphor-icons/react";
-import { CartButton } from "./styles";
+import { CartButton, CartButtonBadge } from "./styles";
 
 export function HeaderCart() {
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate("/cart");
+  }
+
   return (
-    <CartButton type="button">
+    <CartButton onClick={handleClick}>
+      <CartButtonBadge>3</CartButtonBadge>
       <ShoppingCart />
     </CartButton>
   );

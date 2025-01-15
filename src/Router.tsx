@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { DefaultLayout } from "./layout/DefaultLayout";
-import { Home } from "./pages/Home";
+import { HomePage } from "./pages/Home";
+import { CartPage } from "./pages/Cart";
 
 export function Router() {
   return (
@@ -12,7 +13,11 @@ export function Router() {
         <Route
           index
           path="/"
-          element={<Home />}
+          element={<HomePage />}
+        />
+        <Route
+          path="/cart"
+          element={<CartPage />}
         />
       </Route>
     </Routes>
