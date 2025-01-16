@@ -16,6 +16,10 @@ export function CartPage() {
 
   const numberOfItemsInCart = getNumberOfItemsInCart();
 
+  function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
+  }
+
   return (
     <CartContainer>
       {numberOfItemsInCart === 0 && (
@@ -27,7 +31,7 @@ export function CartPage() {
       )}
 
       {numberOfItemsInCart > 0 && (
-        <form>
+        <form onSubmit={handleSubmit}>
           <CartUserContentWrapper>
             <CartTitle>Complete seu pedido</CartTitle>
             <CartUserContent />

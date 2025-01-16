@@ -39,6 +39,7 @@ export function CartUserForm() {
       toast.success("Endereço encontrado com sucesso!");
     } catch (error) {
       console.error(error);
+      toast.error("Erro ao buscar endereço pelo CEP");
     } finally {
       setIsLoading(false);
     }

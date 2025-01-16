@@ -24,6 +24,7 @@ export const CartTitle = styled.h2`
 
 export const CartEmptyState = styled.div`
   margin: 0 auto;
+  width: 40rem;
 
   h1 {
     font-size: 2rem;
@@ -31,7 +32,7 @@ export const CartEmptyState = styled.div`
   }
 
   p {
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
   }
 
   a {
