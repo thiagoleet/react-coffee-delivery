@@ -7,9 +7,7 @@ export const CartContainer = styled.main`
   gap: 1rem;
 `;
 
-export const CartUserContentWrapper = styled.div`
-  flex: 1;
-`;
+export const CartUserContentWrapper = styled.div``;
 
 export const CartContentWrapper = styled.div``;
 
