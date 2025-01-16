@@ -10,6 +10,7 @@ export const defaultTheme = {
   "base-background": "#FAFAFA",
   "base-subtitle": "#403937",
   "base-title": "#272221",
+  "base-hover": "#D7D5D5",
 
   "yellow-dark": "#C47F17",
   "yellow-light": "#F1E9C9",

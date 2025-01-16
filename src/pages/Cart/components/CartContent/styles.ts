@@ -72,4 +72,8 @@ export const CartContentItemRemoveButton = styled.button`
     text-transform: uppercase;
     font-size: 0.7rem;
   }
+
+  &:hover {
+    background-color: ${({ theme }) => theme["base-hover"]};
+  }
 `;
