@@ -27,7 +27,7 @@ export function CartPage() {
       )}
 
       {numberOfItemsInCart > 0 && (
-        <>
+        <form>
           <CartUserContentWrapper>
             <CartTitle>Complete seu pedido</CartTitle>
             <CartUserContent />
@@ -37,7 +37,7 @@ export function CartPage() {
             <CartTitle>Cafés selecionados</CartTitle>
             <CartContent />
           </CartContentWrapper>
-        </>
+        </form>
       )}
     </CartContainer>
   );

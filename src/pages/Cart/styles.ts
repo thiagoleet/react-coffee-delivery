@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 export const CartContainer = styled.main`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 1rem;
+  form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+  }
 `;
 
 export const CartUserContentWrapper = styled.div`

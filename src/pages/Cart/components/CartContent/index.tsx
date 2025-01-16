@@ -78,7 +78,10 @@ export function CartContent() {
 
         {!city && <small>Selecione uma cidade para calcular a entrega</small>}
 
-        <CartSubmitButton disabled={isSubmitDisabled}>
+        <CartSubmitButton
+          type="submit"
+          disabled={isSubmitDisabled}
+        >
           Confirmar Pedido
         </CartSubmitButton>
       </CartContentFooter>

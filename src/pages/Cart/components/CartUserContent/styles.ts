@@ -18,13 +18,8 @@ export const CartUserFormContainer = styled.div`
   background-color: ${({ theme }) => theme["base-card"]};
   padding: 1.5rem 2rem;
   border-radius: 8px;
-
   display: flex;
   flex-direction: column;
-
-  form {
-    width: 100%;
-  }
 `;
 
 export const CartUserFormHeader = styled.header`
@@ -52,5 +47,48 @@ export const CartUserFormHeader = styled.header`
       font-size: 0.9rem;
       line-height: 1.4;
     }
+  }
+`;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+export const FormLine = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+`;
+
+export const InputField = styled.input`
+  background-color: ${({ theme }) => theme["base-input"]};
+  border: 1px solid ${({ theme }) => theme["base-button"]};
+  border-radius: 8px;
+  padding: 1rem 1rem;
+  color: ${({ theme }) => theme["base-text"]};
+  outline-color: ${({ theme }) => theme["yellow-dark"]};
+
+  &::placeholder {
+    color: ${({ theme }) => theme["base-label"]};
+  }
+
+  &::-ms-input-placeholder {
+    /* Edge 12 -18 */
+    color: ${({ theme }) => theme["base-label"]};
+  }
+
+  &.full {
+    flex: 1;
+  }
+
+  &.md {
+    flex: 0.5;
+  }
+
+  &.sm {
+    flex: 0.25;
   }
 `;
