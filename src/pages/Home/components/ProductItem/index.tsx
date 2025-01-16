@@ -31,7 +31,6 @@ export function ProductItem({ coffee }: ProductItemProps) {
   }
 
   function handleAddToCart() {
-    console.log("Adding to cart", coffee, quantity);
     addCoffeeToCart(coffee, quantity);
   }
 

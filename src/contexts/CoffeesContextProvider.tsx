@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { CoffeesContext } from "./CoffeesContext";
 import {
   addCoffeeToCartAction,
+  removeCoffeeFromCartAction,
   setCoffeesAction,
 } from "@/reducers/coffees/action";
 import { coffeesReducer, CoffeesState } from "@/reducers/coffees/reducer";
@@ -45,9 +46,12 @@ export function CoffeesContextProvider({
     );
   }
 
-  function addToCart(coffee: Coffee, quantity: number) {
-    console.log("addToCart", coffee, quantity);
+  function addToCart(coffee: Partial<Coffee>, quantity: number) {
     dispatch(addCoffeeToCartAction(coffee, quantity));
+  }
+
+  function removeFromCart(coffee: Partial<Coffee>) {
+    dispatch(removeCoffeeFromCartAction(coffee));
   }
 
   const { coffees, cart } = coffeesState;
@@ -64,6 +68,7 @@ export function CoffeesContextProvider({
         setCoffees,
         getNumberOfItemsInCart,
         addCoffeeToCart: addToCart,
+        removeFromCart,
       }}
     >
       {children}

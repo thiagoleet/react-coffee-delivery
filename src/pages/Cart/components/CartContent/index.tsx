@@ -2,9 +2,19 @@ import React from "react";
 import { CartContentItem } from "./CartContentItem";
 import { CartContentContainer, CartContentItemsWrapper } from "./styles";
 import { CoffeesContext } from "@/contexts/CoffeesContext";
+import { CartItem } from "@/models/Cart";
 
 export function CartContent() {
-  const { cart } = React.useContext(CoffeesContext);
+  const { cart, addCoffeeToCart, removeFromCart } =
+    React.useContext(CoffeesContext);
+
+  function handleUpdateItem(item: CartItem) {
+    addCoffeeToCart(item.coffee, item.quantity);
+  }
+
+  function handleRemoveItem(item: CartItem) {
+    removeFromCart(item.coffee);
+  }
 
   return (
     <CartContentContainer>
@@ -14,8 +24,8 @@ export function CartContent() {
             <CartContentItem
               key={item.id}
               item={item}
-              onRemove={() => {}}
-              onUpdate={() => {}}
+              onRemove={handleRemoveItem}
+              onUpdate={handleUpdateItem}
             />
           ))}
       </CartContentItemsWrapper>

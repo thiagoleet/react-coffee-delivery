@@ -1,24 +1,44 @@
+import React from "react";
 import { CartContent } from "./components/CartContent";
 import { CartUserContent } from "./components/CartUserContent";
 import {
   CartContainer,
   CartContentWrapper,
+  CartEmptyState,
   CartTitle,
   CartUserContentWrapper,
 } from "./styles";
+import { CoffeesContext } from "@/contexts/CoffeesContext";
+import { NavLink } from "react-router-dom";
 
 export function CartPage() {
+  const { getNumberOfItemsInCart } = React.useContext(CoffeesContext);
+
+  const numberOfItemsInCart = getNumberOfItemsInCart();
+
   return (
     <CartContainer>
-      <CartUserContentWrapper>
-        <CartTitle>Complete seu pedido</CartTitle>
-        <CartUserContent />
-      </CartUserContentWrapper>
+      {numberOfItemsInCart === 0 && (
+        <CartEmptyState>
+          <h1>Seu carrinho está vazio</h1>
+          <p>Adicione cafés ao seu carrinho para continuar</p>
+          <NavLink to="/">Veja nossos cafés</NavLink>
+        </CartEmptyState>
+      )}
 
-      <CartContentWrapper>
-        <CartTitle>Cafés selecionados</CartTitle>
-        <CartContent />
-      </CartContentWrapper>
+      {numberOfItemsInCart > 0 && (
+        <>
+          <CartUserContentWrapper>
+            <CartTitle>Complete seu pedido</CartTitle>
+            <CartUserContent />
+          </CartUserContentWrapper>
+
+          <CartContentWrapper>
+            <CartTitle>Cafés selecionados</CartTitle>
+            <CartContent />
+          </CartContentWrapper>
+        </>
+      )}
     </CartContainer>
   );
 }

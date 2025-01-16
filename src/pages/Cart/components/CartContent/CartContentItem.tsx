@@ -13,8 +13,8 @@ import { Trash } from "@phosphor-icons/react";
 
 export interface CartCartContentItemProps {
   item: CartItem;
-  onUpdate: VoidFunction;
-  onRemove: VoidFunction;
+  onUpdate: (item: CartItem) => void;
+  onRemove: (item: CartItem) => void;
 }
 
 export function CartContentItem({
@@ -26,11 +26,14 @@ export function CartContentItem({
 
   function handleUpdateQuantity(value: number) {
     setQuantity(value);
-    onUpdate();
+    onUpdate({
+      ...item,
+      quantity: value,
+    });
   }
 
   function handleRemove() {
-    onRemove();
+    onRemove(item);
   }
 
   const price = new Intl.NumberFormat("pt-BR", {

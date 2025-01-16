@@ -35,3 +35,16 @@ export function addCoffeeToCart(
 
   return { ...cart };
 }
+
+export function removeCoffeeFromCart(
+  cart: Cart,
+  coffee: Partial<Coffee>
+): Cart {
+  const toBeRemoved = cart.items.find((item) => item.id === coffee.id);
+
+  if (toBeRemoved) {
+    cart.items = cart.items.filter((item) => item.id !== coffee.id);
+  }
+
+  return cart;
+}
