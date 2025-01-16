@@ -7,11 +7,18 @@ export const CartContainer = styled.main`
   gap: 1rem;
 `;
 
-export const CartUserContentWrapper = styled.div``;
+export const CartUserContentWrapper = styled.div`
+  flex: 1;
+`;
 
-export const CartContentWrapper = styled.div``;
+export const CartContentWrapper = styled.div`
+  width: 25rem;
+`;
 
-export const CartTitle = styled.h2``;
+export const CartTitle = styled.h2`
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+`;
 
 export const CartEmptyState = styled.div`
   margin: 0 auto;
