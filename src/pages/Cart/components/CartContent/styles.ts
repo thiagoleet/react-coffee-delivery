@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const CartContentContainer = styled(BaseCard)`
   display: flex;
   flex-direction: column;
+  width: 25rem;
 `;
 
 export const CartContentItemsWrapper = styled.div`
@@ -29,7 +30,9 @@ export const CartContentItemImage = styled.figure`
   }
 `;
 
-export const CartContentItemContainer = styled.div``;
+export const CartContentItemContainer = styled.div`
+  flex: 1;
+`;
 
 export const CartContentItemDescription = styled.div`
   display: flex;
@@ -82,6 +85,12 @@ export const CartContentFooter = styled.footer`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  small {
+    text-align: center;
+    padding: 1rem 0.5rem;
+    color: ${({ theme }) => theme["yellow-dark"]};
+  }
 `;
 
 export const CartContentFooterDescription = styled.div`
@@ -90,10 +99,17 @@ export const CartContentFooterDescription = styled.div`
   gap: 0.5rem;
 `;
 
-export const CartContentFooterDescriptionItem = styled.div``;
+export const CartContentFooterDescriptionItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
 export const CartContentFooterTotal = styled.div`
   font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const CartSubmitButton = styled.button`

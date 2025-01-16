@@ -11,12 +11,27 @@ import {
 } from "./styles";
 import { CoffeesContext } from "@/contexts/CoffeesContext";
 import { CartItem } from "@/models/Cart";
+import toast from "react-hot-toast";
 
 export function CartContent() {
-  const { cart, city, addCoffeeToCart, removeFromCart } =
+  const { cart, city, addCoffeeToCart, removeFromCart, getSubtotal, getTotal } =
     React.useContext(CoffeesContext);
 
   const isSubmitDisabled = cart?.items.length === 0 || !city;
+  const subtotal = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(cart.items.length > 0 ? getSubtotal() / 100 : 0);
+
+  const total = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(cart.items.length > 0 ? getTotal() / 100 : 0);
+
+  const shipping = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(city ? city.shippingAmount / 100 : 0);
 
   function handleUpdateItem(item: CartItem) {
     addCoffeeToCart(item.coffee, item.quantity);
@@ -25,6 +40,12 @@ export function CartContent() {
   function handleRemoveItem(item: CartItem) {
     removeFromCart(item.coffee);
   }
+
+  React.useEffect(() => {
+    if (!city) {
+      toast.error("Selecione uma cidade para calcular a entrega");
+    }
+  }, [city]);
 
   return (
     <CartContentContainer>
@@ -43,18 +64,20 @@ export function CartContent() {
         <CartContentFooterDescription>
           <CartContentFooterDescriptionItem>
             <span>Total de itens</span>
-            <span></span>
+            <span>{subtotal}</span>
           </CartContentFooterDescriptionItem>
           <CartContentFooterDescriptionItem>
-            {city && (
-              <>
-                <span>Entrega</span>
-                <span></span>
-              </>
-            )}
+            <span>Entrega</span>
+            <span>{shipping}</span>
           </CartContentFooterDescriptionItem>
-          <CartContentFooterTotal>Total</CartContentFooterTotal>
+          <CartContentFooterTotal>
+            <span>Total</span>
+            <span>{total}</span>
+          </CartContentFooterTotal>
         </CartContentFooterDescription>
+
+        {!city && <small>Selecione uma cidade para calcular a entrega</small>}
+
         <CartSubmitButton disabled={isSubmitDisabled}>
           Confirmar Pedido
         </CartSubmitButton>

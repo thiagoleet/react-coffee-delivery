@@ -36,6 +36,8 @@ export function CoffeesContextProvider({
     }
   );
 
+  const { coffees, cart, cities, city } = coffeesState;
+
   function setCoffees(coffees: Coffee[]) {
     dispatch(setCoffeesAction(coffees));
   }
@@ -55,6 +57,22 @@ export function CoffeesContextProvider({
     );
   }
 
+  function getSubtotal(): number {
+    if (!coffeesState.cart) {
+      return 0;
+    }
+
+    return coffeesState.cart.items.reduce((acc, item) => {
+      return acc + item.coffee.price! * item.quantity;
+    }, 0);
+  }
+
+  function getTotal(): number {
+    const shipping = city ? city.shippingAmount : 0;
+
+    return getSubtotal() + shipping;
+  }
+
   function addToCart(coffee: Partial<Coffee>, quantity: number) {
     dispatch(addCoffeeToCartAction(coffee, quantity));
   }
@@ -66,8 +84,6 @@ export function CoffeesContextProvider({
   function handleSelectCity(city: City) {
     dispatch(selectCityAction(city));
   }
-
-  const { coffees, cart, cities, city } = coffeesState;
 
   React.useEffect(() => {
     setCoffees(coffeesData);
@@ -84,6 +100,8 @@ export function CoffeesContextProvider({
         setCoffees,
         setCities,
         getNumberOfItemsInCart,
+        getSubtotal,
+        getTotal,
         addCoffeeToCart: addToCart,
         removeFromCart,
         selectCity: handleSelectCity,
