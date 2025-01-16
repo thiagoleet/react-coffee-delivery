@@ -1,20 +1,48 @@
 import React, { ReactNode } from "react";
 import { CoffeesContext } from "./CoffeesContext";
-import { setCoffeesAction } from "../reducers/coffees/action";
-import { coffeesReducer } from "../reducers/coffees/reducer";
-import { Coffee } from "../models/Coffee";
-import { coffees as data } from "../data/coffees";
+import { setCoffeesAction } from "@/reducers/coffees/action";
+import { coffeesReducer, CoffeesState } from "@/reducers/coffees/reducer";
+import { Coffee } from "@/models/Coffee";
+import { coffees as data } from "@/data/coffees";
 
 interface CoffeesContextProviderProps {
   children: ReactNode;
 }
+
+const initialState: CoffeesState = {
+  coffees: [],
+  cart: {
+    items: [
+      {
+        coffee: {
+          id: "tradicional",
+          name: "Espresso Tradicional",
+          image: "/expresso.png",
+          price: 999,
+        },
+        id: "cart-item-01",
+        quantity: 1,
+      },
+      {
+        coffee: {
+          id: "americano",
+          name: "Espresso Americano",
+          image: "/americano.png",
+          price: 999,
+        },
+        id: "cart-item-02",
+        quantity: 1,
+      },
+    ],
+  },
+};
 
 export function CoffeesContextProvider({
   children,
 }: CoffeesContextProviderProps) {
   const [coffeesState, dispatch] = React.useReducer(
     coffeesReducer,
-    { coffees: [], cart: { items: [] } },
+    initialState,
     (initialState) => {
       return initialState;
     }

@@ -1,7 +1,7 @@
 import { CityPicker } from "./CityPicker";
 import { HeaderCart } from "./HeaderCart";
 import { HeaderContainer, LogoContainer } from "./styles";
-import ImgLogo from "../../assets/logo.svg";
+import ImgLogo from "@/assets/logo.svg";
 import { NavLink } from "react-router-dom";
 
 export function Header() {

@@ -7,5 +7,5 @@ export interface Cart {
 export interface CartItem {
   id: string;
   quantity: number;
-  coffee: Coffee;
+  coffee: Partial<Coffee>;
 }

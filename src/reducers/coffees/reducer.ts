@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Cart } from "../../models/Cart";
-import { Coffee } from "../../models/Coffee";
+import { Cart } from "@/models/Cart";
+import { Coffee } from "@/models/Coffee";
 import { ActionTypes } from "./action";
 
 export interface CoffeesState {

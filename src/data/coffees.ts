@@ -1,4 +1,4 @@
-import { Coffee } from "../models/Coffee";
+import { Coffee } from "@/models/Coffee";
 
 export const coffees: Coffee[] = [
   {

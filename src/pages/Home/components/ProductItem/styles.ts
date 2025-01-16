@@ -1,19 +1,14 @@
+import { BaseCard } from "@/styles/base";
 import styled from "styled-components";
 
 export const ProductItemWrapper = styled.article`
   margin-top: 50px;
 `;
 
-export const ProductItemContent = styled.div`
+export const ProductItemContent = styled(BaseCard)`
   display: flex;
   flex-direction: column;
   position: relative;
-  background-color: ${({ theme }) => theme["base-card"]};
-  padding: 1.5rem 2rem;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-top-left-radius: 8px;
-  border-bottom-right-radius: 8px;
 `;
 
 export const ProductItemHeader = styled.header`

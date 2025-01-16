@@ -1,4 +1,4 @@
-import { Coffee } from "../../models/Coffee";
+import { Coffee } from "@/models/Coffee";
 
 export enum ActionTypes {
   SET_COFFEES = "SET_COFFEES",

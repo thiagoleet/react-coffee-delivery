@@ -1,6 +1,6 @@
 import React from "react";
-import { QuantityInput } from "../../../../components/QuantityInput";
-import { Coffee } from "../../../../models/Coffee";
+import { QuantityInput } from "@/components/QuantityInput";
+import { Coffee } from "@/models/Coffee";
 import { CartButton } from "./CartButton";
 import {
   ProductItemContent,

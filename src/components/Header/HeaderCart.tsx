@@ -1,8 +1,8 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ShoppingCart } from "@phosphor-icons/react";
 import { CartButton, CartButtonBadge } from "./styles";
-import React from "react";
-import { CoffeesContext } from "../../contexts/CoffeesContext";
+import { CoffeesContext } from "@/contexts/CoffeesContext";
 
 export function HeaderCart() {
   const navigate = useNavigate();

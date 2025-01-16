@@ -1,6 +1,6 @@
 import React from "react";
-import { Coffee } from "../models/Coffee";
-import { Cart } from "../models/Cart";
+import { Coffee } from "@/models/Coffee";
+import { Cart } from "@/models/Cart";
 
 interface CoffeesContextData {
   coffees: Coffee[];
