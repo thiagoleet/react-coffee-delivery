@@ -53,14 +53,51 @@ export const CartButtonBadge = styled.span`
   align-items: center;
 `;
 
-export const CityPickerContainer = styled.nav`
+const CityPickerBase = styled.div`
   color: ${({ theme }) => theme["purple-base"]};
   background-color: ${({ theme }) => theme["purple-light"]};
-  padding: 0.5rem 1rem;
   border-radius: 8px;
   cursor: pointer;
+  font-weight: normal;
+`;
+
+export const CityPickerContainer = styled(CityPickerBase)`
   display: flex;
   align-items: center;
   gap: 0.2rem;
-  font-weight: normal;
+  position: relative;
+  margin: 0;
+  min-width: 10rem;
+`;
+
+export const CityPickerSelect = styled(CityPickerBase)`
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+`;
+
+export const CityPickerSelectItem = styled.li`
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 0.8rem;
+
+  &:hover {
+    color: ${({ theme }) => theme["purple-light"]};
+    background-color: ${({ theme }) => theme["purple-base"]};
+  }
 `;

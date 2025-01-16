@@ -3,11 +3,15 @@ import { CoffeesContext } from "./CoffeesContext";
 import {
   addCoffeeToCartAction,
   removeCoffeeFromCartAction,
+  selectCityAction,
+  setCitiesAction,
   setCoffeesAction,
 } from "@/reducers/coffees/action";
 import { coffeesReducer, CoffeesState } from "@/reducers/coffees/reducer";
 import { Coffee } from "@/models/Coffee";
-import { coffees as data } from "@/data/coffees";
+import coffeesData from "@/data/coffees";
+import citiesData from "@/data/cities";
+import { City } from "@/models/City";
 
 interface CoffeesContextProviderProps {
   children: ReactNode;
@@ -15,6 +19,7 @@ interface CoffeesContextProviderProps {
 
 const initialState: CoffeesState = {
   coffees: [],
+  cities: [],
   cart: {
     items: [],
   },
@@ -33,6 +38,10 @@ export function CoffeesContextProvider({
 
   function setCoffees(coffees: Coffee[]) {
     dispatch(setCoffeesAction(coffees));
+  }
+
+  function setCities(cities: City[]) {
+    dispatch(setCitiesAction(cities));
   }
 
   function getNumberOfItemsInCart() {
@@ -54,10 +63,15 @@ export function CoffeesContextProvider({
     dispatch(removeCoffeeFromCartAction(coffee));
   }
 
-  const { coffees, cart } = coffeesState;
+  function handleSelectCity(city: City) {
+    dispatch(selectCityAction(city));
+  }
+
+  const { coffees, cart, cities, city } = coffeesState;
 
   React.useEffect(() => {
-    setCoffees(data);
+    setCoffees(coffeesData);
+    setCities(citiesData);
   }, []);
 
   return (
@@ -65,10 +79,14 @@ export function CoffeesContextProvider({
       value={{
         coffees,
         cart,
+        cities,
+        city,
         setCoffees,
+        setCities,
         getNumberOfItemsInCart,
         addCoffeeToCart: addToCart,
         removeFromCart,
+        selectCity: handleSelectCity,
       }}
     >
       {children}

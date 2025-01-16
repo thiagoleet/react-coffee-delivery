@@ -12,7 +12,7 @@ export interface CartItem {
 
 export function addCoffeeToCart(
   cart: Cart,
-  coffee: Coffee,
+  coffee: Partial<Coffee>,
   quantity: number
 ): Cart {
   const item = cart.items.find((item) => item.id === coffee.id);
@@ -22,7 +22,7 @@ export function addCoffeeToCart(
     item.quantity = quantity;
   } else {
     cart.items.push({
-      id: coffee.id,
+      id: coffee.id || "",
       quantity: quantity,
       coffee: {
         id: coffee.id,

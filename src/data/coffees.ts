@@ -1,6 +1,6 @@
 import { Coffee } from "@/models/Coffee";
 
-export const coffees: Coffee[] = [
+const coffees: Coffee[] = [
   {
     id: "tradicional",
     name: "Espresso Tradicional",
@@ -118,3 +118,5 @@ export const coffees: Coffee[] = [
     tags: ["especial", "alcoólico"],
   },
 ];
+
+export default coffees;
