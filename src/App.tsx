@@ -4,6 +4,7 @@ import { defaultTheme } from "./styles/theme/default";
 import { BrowserRouter } from "react-router-dom";
 import { Router } from "./Router";
 import { CoffeesContextProvider } from "./contexts/CoffeesContextProvider";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -13,6 +14,10 @@ function App() {
           <Router />
         </CoffeesContextProvider>
       </BrowserRouter>
+      <Toaster
+        position="bottom-center"
+        reverseOrder={false}
+      />
       <GlobalStyle />
     </ThemeProvider>
   );

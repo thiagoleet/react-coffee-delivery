@@ -1,4 +1,5 @@
 import { MapPin } from "@phosphor-icons/react";
+import toast from "react-hot-toast";
 import {
   CityPickerContainer,
   CityPickerSelect,
@@ -19,6 +20,7 @@ export function CityPicker() {
   function handleSelectCity(city: City) {
     setShowOptions(false);
     selectCity(city);
+    toast.success(`Alterado para: ${city.name}`);
   }
 
   return (

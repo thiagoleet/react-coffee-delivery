@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 import { QuantityInput } from "@/components/QuantityInput";
 import {
   CartContentItemActions,
@@ -30,10 +31,12 @@ export function CartContentItem({
       ...item,
       quantity: value,
     });
+    toast.success(`${item.coffee.name}\n quantidade alterada para ${value}`);
   }
 
   function handleRemove() {
     onRemove(item);
+    toast.success(`${item.coffee.name} removido`);
   }
 
   const price = new Intl.NumberFormat("pt-BR", {

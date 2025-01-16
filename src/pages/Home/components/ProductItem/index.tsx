@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 import { QuantityInput } from "@/components/QuantityInput";
 import { Coffee } from "@/models/Coffee";
 import { CartButton } from "./CartButton";
@@ -32,6 +33,7 @@ export function ProductItem({ coffee }: ProductItemProps) {
 
   function handleAddToCart() {
     addCoffeeToCart(coffee, quantity);
+    toast.success(`${coffee.name} (${quantity}) adicionado`);
   }
 
   const price = new Intl.NumberFormat("pt-BR").format(

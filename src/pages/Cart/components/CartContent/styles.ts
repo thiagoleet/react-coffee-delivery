@@ -77,3 +77,40 @@ export const CartContentItemRemoveButton = styled.button`
     background-color: ${({ theme }) => theme["base-hover"]};
   }
 `;
+
+export const CartContentFooter = styled.footer`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+export const CartContentFooterDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+export const CartContentFooterDescriptionItem = styled.div``;
+
+export const CartContentFooterTotal = styled.div`
+  font-weight: bold;
+`;
+
+export const CartSubmitButton = styled.button`
+  text-transform: uppercase;
+  color: ${({ theme }) => theme["white"]};
+  background-color: ${({ theme }) => theme["yellow-brand"]};
+  border: 0;
+  border-radius: 8px;
+  padding: 1rem 0.5rem;
+  cursor: pointer;
+
+  &:not(:disabled):hover {
+    background-color: ${({ theme }) => theme["yellow-dark"]};
+  }
+
+  &:disabled {
+    background-color: ${({ theme }) => theme["yellow-light"]};
+    cursor: not-allowed;
+  }
+`;
