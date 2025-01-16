@@ -12,6 +12,7 @@ export const defaultTheme = {
   "yellow-dark": "#C47F17",
   "yellow-light": "#F1E9C9",
   "yellow-base": "#FAFAFA",
+  "yellow-brand": "#DBAC2C",
 
   "base-subtitle": "#403937",
   "base-title": "#272221",

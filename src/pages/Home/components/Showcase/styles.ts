@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
-export const ShowCaseWrapper = styled.section``;
+export const ShowCaseWrapper = styled.section`
+  @media screen and (max-width: 768px) {
+    padding: 0 1rem;
+  }
+`;
 
 export const ShowCaseTitle = styled.h2`
-  margin-bottom: 2rem;
+  margin: 2rem 0;
   font-weight: bold;
 `;
 
