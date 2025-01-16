@@ -14,7 +14,7 @@ export function CoffeesContextProvider({
 }: CoffeesContextProviderProps) {
   const [coffeesState, dispatch] = React.useReducer(
     coffeesReducer,
-    { coffees: [] },
+    { coffees: [], cart: { items: [] } },
     (initialState) => {
       return initialState;
     }
@@ -24,7 +24,18 @@ export function CoffeesContextProvider({
     dispatch(setCoffeesAction(coffees));
   }
 
-  const { coffees } = coffeesState;
+  function getNumberOfItemsInCart() {
+    if (!coffeesState.cart) {
+      return 0;
+    }
+
+    return coffeesState.cart.items.reduce(
+      (acc, item) => acc + item.quantity,
+      0
+    );
+  }
+
+  const { coffees, cart } = coffeesState;
 
   React.useEffect(() => {
     setCoffees(data);
@@ -34,7 +45,9 @@ export function CoffeesContextProvider({
     <CoffeesContext.Provider
       value={{
         coffees,
+        cart,
         setCoffees,
+        getNumberOfItemsInCart,
       }}
     >
       {children}
