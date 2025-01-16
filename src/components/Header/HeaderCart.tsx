@@ -17,7 +17,9 @@ export function HeaderCart() {
   return (
     <CartButton onClick={handleClick}>
       {numberOfItemsInCart > 0 && (
-        <CartButtonBadge>{numberOfItemsInCart}</CartButtonBadge>
+        <CartButtonBadge className="badge">
+          {numberOfItemsInCart}
+        </CartButtonBadge>
       )}
       <ShoppingCart />
     </CartButton>

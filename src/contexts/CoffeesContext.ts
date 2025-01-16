@@ -4,9 +4,10 @@ import { Cart } from "@/models/Cart";
 
 interface CoffeesContextData {
   coffees: Coffee[];
+  cart: Cart;
   setCoffees: (coffees: Coffee[]) => void;
   getNumberOfItemsInCart: () => number;
-  cart?: Cart;
+  addCoffeeToCart: (coffee: Coffee, quantity: number) => void;
 }
 
 export const CoffeesContext = React.createContext<CoffeesContextData>(

@@ -29,6 +29,11 @@ export const CartButton = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme["yellow-dark"]};
     color: ${({ theme }) => theme["yellow-light"]};
+
+    .badge {
+      background-color: ${({ theme }) => theme["yellow-light"]};
+      color: ${({ theme }) => theme["yellow-dark"]};
+    }
   }
 `;
 

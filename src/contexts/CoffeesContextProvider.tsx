@@ -1,6 +1,9 @@
 import React, { ReactNode } from "react";
 import { CoffeesContext } from "./CoffeesContext";
-import { setCoffeesAction } from "@/reducers/coffees/action";
+import {
+  addCoffeeToCartAction,
+  setCoffeesAction,
+} from "@/reducers/coffees/action";
 import { coffeesReducer, CoffeesState } from "@/reducers/coffees/reducer";
 import { Coffee } from "@/models/Coffee";
 import { coffees as data } from "@/data/coffees";
@@ -12,28 +15,7 @@ interface CoffeesContextProviderProps {
 const initialState: CoffeesState = {
   coffees: [],
   cart: {
-    items: [
-      {
-        coffee: {
-          id: "tradicional",
-          name: "Espresso Tradicional",
-          image: "/expresso.png",
-          price: 999,
-        },
-        id: "cart-item-01",
-        quantity: 1,
-      },
-      {
-        coffee: {
-          id: "americano",
-          name: "Espresso Americano",
-          image: "/americano.png",
-          price: 999,
-        },
-        id: "cart-item-02",
-        quantity: 1,
-      },
-    ],
+    items: [],
   },
 };
 
@@ -63,6 +45,11 @@ export function CoffeesContextProvider({
     );
   }
 
+  function addToCart(coffee: Coffee, quantity: number) {
+    console.log("addToCart", coffee, quantity);
+    dispatch(addCoffeeToCartAction(coffee, quantity));
+  }
+
   const { coffees, cart } = coffeesState;
 
   React.useEffect(() => {
@@ -76,6 +63,7 @@ export function CoffeesContextProvider({
         cart,
         setCoffees,
         getNumberOfItemsInCart,
+        addCoffeeToCart: addToCart,
       }}
     >
       {children}

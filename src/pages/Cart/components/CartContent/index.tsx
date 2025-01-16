@@ -14,6 +14,8 @@ export function CartContent() {
             <CartContentItem
               key={item.id}
               item={item}
+              onRemove={() => {}}
+              onUpdate={() => {}}
             />
           ))}
       </CartContentItemsWrapper>

@@ -1,3 +1,4 @@
+import React from "react";
 import { QuantityInput } from "@/components/QuantityInput";
 import {
   CartContentItemActions,
@@ -12,9 +13,26 @@ import { Trash } from "@phosphor-icons/react";
 
 export interface CartCartContentItemProps {
   item: CartItem;
+  onUpdate: VoidFunction;
+  onRemove: VoidFunction;
 }
 
-export function CartContentItem({ item }: CartCartContentItemProps) {
+export function CartContentItem({
+  item,
+  onUpdate,
+  onRemove,
+}: CartCartContentItemProps) {
+  const [quantity, setQuantity] = React.useState(item.quantity);
+
+  function handleUpdateQuantity(value: number) {
+    setQuantity(value);
+    onUpdate();
+  }
+
+  function handleRemove() {
+    onRemove();
+  }
+
   const price = new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
@@ -35,11 +53,11 @@ export function CartContentItem({ item }: CartCartContentItemProps) {
         </CartContentItemDescription>
         <CartContentItemActions>
           <QuantityInput
-            onUpdate={() => {}}
-            value={1}
+            onUpdate={handleUpdateQuantity}
+            value={quantity}
             size="sm"
           />
-          <CartContentItemRemoveButton>
+          <CartContentItemRemoveButton onClick={handleRemove}>
             <Trash />
             <span>Remover</span>
           </CartContentItemRemoveButton>

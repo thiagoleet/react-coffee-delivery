@@ -16,16 +16,23 @@ import {
   ProductItemTitle,
   ProductItemWrapper,
 } from "./styles";
+import { CoffeesContext } from "@/contexts/CoffeesContext";
 
 interface ProductItemProps {
   coffee: Coffee;
 }
 
 export function ProductItem({ coffee }: ProductItemProps) {
+  const { addCoffeeToCart } = React.useContext(CoffeesContext);
   const [quantity, setQuantity] = React.useState(1);
 
   function handleUpdateQuantity(value: number) {
     setQuantity(value);
+  }
+
+  function handleAddToCart() {
+    console.log("Adding to cart", coffee, quantity);
+    addCoffeeToCart(coffee, quantity);
   }
 
   const price = new Intl.NumberFormat("pt-BR").format(
@@ -60,7 +67,7 @@ export function ProductItem({ coffee }: ProductItemProps) {
             value={quantity}
             onUpdate={handleUpdateQuantity}
           />
-          <CartButton />
+          <CartButton onClick={handleAddToCart} />
         </ProductItemFooter>
       </ProductItemContent>
     </ProductItemWrapper>
