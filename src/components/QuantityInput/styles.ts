@@ -24,6 +24,7 @@ export const QuantityInputWrapper = styled.div`
 
   /* Firefox */
   input[type="number"] {
+    appearance: textfield;
     -moz-appearance: textfield;
   }
 
@@ -36,5 +37,13 @@ export const QuantityInputWrapper = styled.div`
     align-items: center;
     padding: 0.5rem;
     color: ${({ theme }) => theme["purple-base"]};
+  }
+
+  &.sm {
+    height: 1.8rem;
+
+    input {
+      font-size: 0.8rem;
+    }
   }
 `;

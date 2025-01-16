@@ -9,9 +9,10 @@ const DEFAULT_VALUE = 1;
 interface QuantityInputProps {
   onUpdate: (value: number) => void;
   value: number;
+  size?: "md" | "sm";
 }
 
-export function QuantityInput({ onUpdate, value }: QuantityInputProps) {
+export function QuantityInput({ onUpdate, value, size }: QuantityInputProps) {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   function handleDecrease() {
@@ -32,6 +33,8 @@ export function QuantityInput({ onUpdate, value }: QuantityInputProps) {
     }
   }
 
+  const sizeClass = size ?? "md";
+
   React.useEffect(() => {
     if (inputRef.current) {
       inputRef.current.value = String(value);
@@ -39,7 +42,7 @@ export function QuantityInput({ onUpdate, value }: QuantityInputProps) {
   }, [value]);
 
   return (
-    <QuantityInputWrapper>
+    <QuantityInputWrapper className={sizeClass}>
       <button onClick={handleDecrease}>-</button>
       <input
         type="number"
