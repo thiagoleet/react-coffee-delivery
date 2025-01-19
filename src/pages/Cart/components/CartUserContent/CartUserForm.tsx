@@ -76,7 +76,6 @@ export function CartUserForm() {
           <InputField
             placeholder="Rua"
             className="full"
-            readOnly
             defaultValue={address?.street}
             required
             {...register("delivery.address")}
@@ -99,7 +98,6 @@ export function CartUserForm() {
             placeholder="Bairro"
             className="md"
             required
-            readOnly
             defaultValue={address?.neighborhood}
             {...register("delivery.neighborhood")}
           />
@@ -107,7 +105,6 @@ export function CartUserForm() {
             placeholder="Cidade"
             className="md"
             required
-            readOnly
             defaultValue={address?.city}
             {...register("delivery.city")}
           />
@@ -115,7 +112,6 @@ export function CartUserForm() {
             placeholder="UF"
             className="sm"
             required
-            readOnly
             defaultValue={address?.state}
             {...register("delivery.state")}
           />
