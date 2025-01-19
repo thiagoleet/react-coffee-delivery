@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 
@@ -19,7 +19,9 @@ import {
 } from "./schemas/CartFormData.schema";
 
 export function CartPage() {
-  const { getNumberOfItemsInCart } = React.useContext(CoffeesContext);
+  const { getNumberOfItemsInCart, createCheckout, cart } =
+    React.useContext(CoffeesContext);
+  const navigate = useNavigate();
 
   const cartForm = useForm<CartFormData>({
     resolver: zodResolver(cartFormDataValidationSchema),
@@ -28,7 +30,19 @@ export function CartPage() {
   const numberOfItemsInCart = getNumberOfItemsInCart();
 
   function handleCheckout(data: CartFormData) {
-    console.log(data);
+    createCheckout({
+      ...cart,
+      address: data.delivery.address,
+      addressNumber: data.delivery.addressNumber,
+      addressComplement: data.delivery.addressComplement,
+      neighborhood: data.delivery.neighborhood,
+      city: data.delivery.city,
+      state: data.delivery.state,
+      zipCode: data.delivery.zipCode,
+      paymentMethod: data.paymentMethod,
+    });
+
+    navigate("/checkout");
   }
 
   return (
