@@ -1,4 +1,5 @@
 import { CartUserForm } from "./CartUserForm";
+import { PaymentContent } from "./PaymentContent";
 import {
   CartUserContentContainer,
   CartUserFormWrapper,
@@ -12,7 +13,9 @@ export function CartUserContent() {
         <CartUserForm />
       </CartUserFormWrapper>
 
-      <PaymentMethodWrapper></PaymentMethodWrapper>
+      <PaymentMethodWrapper>
+        <PaymentContent />
+      </PaymentMethodWrapper>
     </CartUserContentContainer>
   );
 }
