@@ -40,6 +40,10 @@ export function coffeesReducer(
       return { ...state, city: action.payload.city };
     }
 
+    case ActionTypes.CREATE_CHECKOUT: {
+      return { ...state, cart: action.payload.cart! };
+    }
+
     default:
       return state;
   }
