@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { CoffeesContext } from "./CoffeesContext";
 import {
   addCoffeeToCartAction,
+  createCheckoutAction,
   removeCoffeeFromCartAction,
   selectCityAction,
   setCitiesAction,
@@ -12,6 +13,7 @@ import { Coffee } from "@/models/Coffee";
 import coffeesData from "@/data/coffees";
 import citiesData from "@/data/cities";
 import { City } from "@/models/City";
+import { Cart } from "@/models/Cart";
 
 interface CoffeesContextProviderProps {
   children: ReactNode;
@@ -22,6 +24,13 @@ const initialState: CoffeesState = {
   cities: [],
   cart: {
     items: [],
+    zipCode: "",
+    address: "",
+    addressNumber: "",
+    neighborhood: "",
+    city: "",
+    state: "",
+    paymentMethod: "",
   },
 };
 
@@ -85,6 +94,10 @@ export function CoffeesContextProvider({
     dispatch(selectCityAction(city));
   }
 
+  function handleCreateCheckout(cart: Cart) {
+    dispatch(createCheckoutAction(cart));
+  }
+
   React.useEffect(() => {
     setCoffees(coffeesData);
     setCities(citiesData);
@@ -105,6 +118,7 @@ export function CoffeesContextProvider({
         addCoffeeToCart: addToCart,
         removeFromCart,
         selectCity: handleSelectCity,
+        createCheckout: handleCreateCheckout,
       }}
     >
       {children}

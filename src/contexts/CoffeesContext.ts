@@ -16,6 +16,7 @@ interface CoffeesContextData {
   addCoffeeToCart: (coffee: Partial<Coffee>, quantity: number) => void;
   removeFromCart: (coffee: Partial<Coffee>) => void;
   selectCity: (city: City) => void;
+  createCheckout: (cart: Cart) => void;
 }
 
 export const CoffeesContext = React.createContext<CoffeesContextData>(
