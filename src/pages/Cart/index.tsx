@@ -31,7 +31,7 @@ export function CartPage() {
 
   function handleCheckout(data: CartFormData) {
     createCheckout({
-      ...cart,
+      cart,
       address: data.delivery.address,
       addressNumber: data.delivery.addressNumber,
       addressComplement: data.delivery.addressComplement,
