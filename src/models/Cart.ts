@@ -2,6 +2,14 @@ import { Coffee } from "./Coffee";
 
 export interface Cart {
   items: CartItem[];
+  zipCode: string;
+  address: string;
+  addressNumber: string;
+  addressComplement?: string;
+  neighborhood: string;
+  city: string;
+  state: string;
+  paymentMethod: string;
 }
 
 export interface CartItem {
