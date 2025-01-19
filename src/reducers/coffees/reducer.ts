@@ -1,4 +1,9 @@
-import { addCoffeeToCart, Cart, removeCoffeeFromCart } from "@/models/Cart";
+import {
+  addCoffeeToCart,
+  Cart,
+  CheckoutCart,
+  removeCoffeeFromCart,
+} from "@/models/Cart";
 import { Coffee } from "@/models/Coffee";
 import { ActionTypes, CoffeesStateAction } from "./action";
 import { City } from "@/models/City";
@@ -7,6 +12,7 @@ export interface CoffeesState {
   coffees: Coffee[];
   cities: City[];
   cart: Cart;
+  checkout: CheckoutCart;
   city?: City | undefined;
 }
 
@@ -41,7 +47,13 @@ export function coffeesReducer(
     }
 
     case ActionTypes.CREATE_CHECKOUT: {
-      return { ...state, cart: action.payload.cart! };
+      return {
+        ...state,
+        cart: {
+          items: [],
+        },
+        checkout: action.payload.checkoutCart!,
+      };
     }
 
     default:

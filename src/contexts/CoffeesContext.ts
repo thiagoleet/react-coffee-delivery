@@ -1,12 +1,13 @@
 import React from "react";
 import { Coffee } from "@/models/Coffee";
-import { Cart } from "@/models/Cart";
+import { Cart, CheckoutCart } from "@/models/Cart";
 import { City } from "@/models/City";
 
 interface CoffeesContextData {
   coffees: Coffee[];
   cities: City[];
   cart: Cart;
+  checkout?: CheckoutCart;
   city?: City | undefined;
   setCoffees: (coffees: Coffee[]) => void;
   setCities: (cities: City[]) => void;
@@ -16,7 +17,7 @@ interface CoffeesContextData {
   addCoffeeToCart: (coffee: Partial<Coffee>, quantity: number) => void;
   removeFromCart: (coffee: Partial<Coffee>) => void;
   selectCity: (city: City) => void;
-  createCheckout: (cart: Cart) => void;
+  createCheckout: (cart: CheckoutCart) => void;
 }
 
 export const CoffeesContext = React.createContext<CoffeesContextData>(

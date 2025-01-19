@@ -13,7 +13,7 @@ import { Coffee } from "@/models/Coffee";
 import coffeesData from "@/data/coffees";
 import citiesData from "@/data/cities";
 import { City } from "@/models/City";
-import { Cart } from "@/models/Cart";
+import { CheckoutCart } from "@/models/Cart";
 
 interface CoffeesContextProviderProps {
   children: ReactNode;
@@ -24,6 +24,11 @@ const initialState: CoffeesState = {
   cities: [],
   cart: {
     items: [],
+  },
+  checkout: {
+    cart: {
+      items: [],
+    },
     zipCode: "",
     address: "",
     addressNumber: "",
@@ -94,8 +99,8 @@ export function CoffeesContextProvider({
     dispatch(selectCityAction(city));
   }
 
-  function handleCreateCheckout(cart: Cart) {
-    dispatch(createCheckoutAction(cart));
+  function handleCreateCheckout(checkoutCart: CheckoutCart) {
+    dispatch(createCheckoutAction(checkoutCart));
   }
 
   React.useEffect(() => {

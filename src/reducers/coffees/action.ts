@@ -1,4 +1,4 @@
-import { Cart } from "@/models/Cart";
+import { Cart, CheckoutCart } from "@/models/Cart";
 import { City } from "@/models/City";
 import { Coffee } from "@/models/Coffee";
 
@@ -20,6 +20,7 @@ export interface CoffeesStateAction {
     cities?: City[];
     city?: City;
     cart?: Cart;
+    checkoutCart?: CheckoutCart;
   };
 }
 
@@ -65,11 +66,13 @@ export function selectCityAction(city: City): CoffeesStateAction {
   };
 }
 
-export function createCheckoutAction(cart: Cart): CoffeesStateAction {
+export function createCheckoutAction(
+  checkoutCart: CheckoutCart
+): CoffeesStateAction {
   return {
     type: ActionTypes.CREATE_CHECKOUT,
     payload: {
-      cart,
+      checkoutCart,
     },
   };
 }

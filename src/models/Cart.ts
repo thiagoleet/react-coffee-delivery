@@ -2,6 +2,16 @@ import { Coffee } from "./Coffee";
 
 export interface Cart {
   items: CartItem[];
+}
+
+export interface CartItem {
+  id: string;
+  quantity: number;
+  coffee: Partial<Coffee>;
+}
+
+export interface CheckoutCart {
+  cart: Cart;
   zipCode: string;
   address: string;
   addressNumber: string;
@@ -10,12 +20,6 @@ export interface Cart {
   city: string;
   state: string;
   paymentMethod: string;
-}
-
-export interface CartItem {
-  id: string;
-  quantity: number;
-  coffee: Partial<Coffee>;
 }
 
 export function addCoffeeToCart(
