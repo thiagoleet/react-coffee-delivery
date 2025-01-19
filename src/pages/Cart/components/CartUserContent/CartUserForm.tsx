@@ -1,5 +1,8 @@
 import React from "react";
 import { MapPinLine } from "@phosphor-icons/react";
+import toast from "react-hot-toast";
+import { useFormContext } from "react-hook-form";
+
 import {
   CartUserFormContainer,
   CartUserFormHeader,
@@ -7,12 +10,13 @@ import {
   InputField,
   InputWrapper,
 } from "./styles";
+
+import { CoffeesContext } from "@/contexts/CoffeesContext";
 import { findAddressByCEP } from "@/services/cep.service";
 import { Address } from "@/models/Address";
-import toast from "react-hot-toast";
-import { CoffeesContext } from "@/contexts/CoffeesContext";
 
 export function CartUserForm() {
+  const { register } = useFormContext();
   const { selectCity } = React.useContext(CoffeesContext);
   const [isLoading, setIsLoading] = React.useState(false);
   const [address, setAddress] = React.useState<Address | null>(null);
@@ -64,6 +68,7 @@ export function CartUserForm() {
             onKeyUp={handleFetchCEP}
             maxLength={8}
             required
+            {...register("delivery.zipCode")}
           />
           {isLoading && <span>Carregando...</span>}
         </FormLine>
@@ -74,16 +79,19 @@ export function CartUserForm() {
             readOnly
             defaultValue={address?.street}
             required
+            {...register("delivery.address")}
           />
         </FormLine>
         <FormLine>
           <InputField
             placeholder="Número"
             required
+            {...register("delivery.addressNumber")}
           />
           <InputField
             placeholder="Complemento"
             className="full"
+            {...register("delivery.addressComplement")}
           />
         </FormLine>
         <FormLine>
@@ -93,6 +101,7 @@ export function CartUserForm() {
             required
             readOnly
             defaultValue={address?.neighborhood}
+            {...register("delivery.neighborhood")}
           />
           <InputField
             placeholder="Cidade"
@@ -100,6 +109,7 @@ export function CartUserForm() {
             required
             readOnly
             defaultValue={address?.city}
+            {...register("delivery.city")}
           />
           <InputField
             placeholder="UF"
@@ -107,6 +117,7 @@ export function CartUserForm() {
             required
             readOnly
             defaultValue={address?.state}
+            {...register("delivery.state")}
           />
         </FormLine>
       </InputWrapper>

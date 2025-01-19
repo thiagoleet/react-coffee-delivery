@@ -110,7 +110,8 @@ export const RadioWrapper = styled.div`
 `;
 
 export const RadioButton = styled.input`
-  display: none;
+  position: absolute;
+  z-index: -1;
   &:checked + label {
     border-color: ${({ theme }) => theme["purple-base"]};
     background-color: ${({ theme }) => theme["purple-light"]};

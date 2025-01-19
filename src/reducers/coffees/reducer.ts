@@ -19,8 +19,6 @@ export function coffeesReducer(
       return { ...state, coffees: action.payload.coffees! };
 
     case ActionTypes.SET_CITIES:
-      console.log(action);
-
       return { ...state, cities: action.payload.cities! };
 
     case ActionTypes.ADD_COFFEE_TO_CART: {

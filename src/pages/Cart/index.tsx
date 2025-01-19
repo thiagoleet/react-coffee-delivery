@@ -1,4 +1,8 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormProvider, useForm } from "react-hook-form";
+
 import { CartContent } from "./components/CartContent";
 import { CartUserContent } from "./components/CartUserContent";
 import {
@@ -9,15 +13,22 @@ import {
   CartUserContentWrapper,
 } from "./styles";
 import { CoffeesContext } from "@/contexts/CoffeesContext";
-import { NavLink } from "react-router-dom";
+import {
+  cartFormDataValidationSchema,
+  CartFormData,
+} from "./schemas/CartFormData.schema";
 
 export function CartPage() {
   const { getNumberOfItemsInCart } = React.useContext(CoffeesContext);
 
+  const cartForm = useForm<CartFormData>({
+    resolver: zodResolver(cartFormDataValidationSchema),
+  });
+
   const numberOfItemsInCart = getNumberOfItemsInCart();
 
-  function handleSubmit(event: React.FormEvent) {
-    event.preventDefault();
+  function handleCheckout(data: CartFormData) {
+    console.log(data);
   }
 
   return (
@@ -31,16 +42,18 @@ export function CartPage() {
       )}
 
       {numberOfItemsInCart > 0 && (
-        <form onSubmit={handleSubmit}>
-          <CartUserContentWrapper>
-            <CartTitle>Complete seu pedido</CartTitle>
-            <CartUserContent />
-          </CartUserContentWrapper>
+        <form onSubmit={cartForm.handleSubmit(handleCheckout)}>
+          <FormProvider {...cartForm}>
+            <CartUserContentWrapper>
+              <CartTitle>Complete seu pedido</CartTitle>
+              <CartUserContent />
+            </CartUserContentWrapper>
 
-          <CartContentWrapper>
-            <CartTitle>Cafés selecionados</CartTitle>
-            <CartContent />
-          </CartContentWrapper>
+            <CartContentWrapper>
+              <CartTitle>Cafés selecionados</CartTitle>
+              <CartContent />
+            </CartContentWrapper>
+          </FormProvider>
         </form>
       )}
     </CartContainer>

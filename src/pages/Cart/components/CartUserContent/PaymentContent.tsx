@@ -1,3 +1,4 @@
+import { useFormContext } from "react-hook-form";
 import { Bank, CreditCard, CurrencyDollar, Money } from "@phosphor-icons/react";
 import {
   CartUserFormContainer,
@@ -9,6 +10,8 @@ import {
 } from "./styles";
 
 export function PaymentContent() {
+  const { register } = useFormContext();
+
   return (
     <CartUserFormContainer>
       <CartUserFormHeader>
@@ -27,10 +30,10 @@ export function PaymentContent() {
         <RadioWrapper>
           <RadioButton
             type="radio"
-            name="payment"
             id="credit-card"
             value="credit-card"
             required
+            {...register("paymentMethod")}
           />
           <RadioLabel htmlFor="credit-card">
             <span className="icon">
@@ -42,13 +45,12 @@ export function PaymentContent() {
         <RadioWrapper>
           <RadioButton
             type="radio"
-            name="payment"
             id="debit-card"
             value="debit-card"
             required
+            {...register("paymentMethod")}
           />
           <RadioLabel htmlFor="debit-card">
-            {" "}
             <span className="icon">
               <Bank size={30} />
             </span>
@@ -58,13 +60,12 @@ export function PaymentContent() {
         <RadioWrapper>
           <RadioButton
             type="radio"
-            name="payment"
             id="money"
             value="money"
             required
+            {...register("paymentMethod")}
           />
           <RadioLabel htmlFor="money">
-            {" "}
             <span className="icon">
               <Money size={30} />
             </span>
