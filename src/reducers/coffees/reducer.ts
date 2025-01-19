@@ -12,7 +12,7 @@ export interface CoffeesState {
   coffees: Coffee[];
   cities: City[];
   cart: Cart;
-  checkout: CheckoutCart;
+  checkout?: CheckoutCart;
   city?: City | undefined;
 }
 
@@ -49,9 +49,9 @@ export function coffeesReducer(
     case ActionTypes.CREATE_CHECKOUT: {
       return {
         ...state,
-        cart: {
-          items: [],
-        },
+        // cart: {
+        //   items: [],
+        // },
         checkout: action.payload.checkoutCart!,
       };
     }

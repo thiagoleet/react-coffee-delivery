@@ -1,3 +1,5 @@
+import React from "react";
+import { CoffeesContext } from "@/contexts/CoffeesContext";
 import { MapPin, Money, Timer } from "@phosphor-icons/react";
 import {
   CheckooutHeader,
@@ -11,6 +13,8 @@ import {
 } from "./styles";
 
 export function CheckoutPage() {
+  const { checkout } = React.useContext(CoffeesContext);
+
   return (
     <CheckoutContainer>
       <CheckooutHeader>
@@ -25,9 +29,18 @@ export function CheckoutPage() {
               <MapPin size={20} />
             </CheckoutContentDetailsItemIcon>
             <CheckoutContentDetailsItemText>
-              Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+              Entrega em{" "}
+              <strong>
+                {checkout?.address}, {checkout?.addressNumber}
+              </strong>
+              {checkout?.addressComplement && (
+                <>
+                  checkout?.addressComplement
+                  <br />
+                </>
+              )}
               <br />
-              Farrapos - Porto Alegre, RS
+              {checkout?.neighborhood} - {checkout?.city}, {checkout?.state}
             </CheckoutContentDetailsItemText>
           </CheckoutContentDetailsItem>
 
@@ -49,7 +62,7 @@ export function CheckoutPage() {
             <CheckoutContentDetailsItemText>
               Pagamento na entrega
               <br />
-              <strong>Cartão de Crédito</strong>
+              <strong>{checkout?.paymentMethod}</strong>
             </CheckoutContentDetailsItemText>
           </CheckoutContentDetailsItem>
         </CheckoutContentDetails>

@@ -7,7 +7,7 @@ interface CoffeesContextData {
   coffees: Coffee[];
   cities: City[];
   cart: Cart;
-  checkout?: CheckoutCart;
+  checkout?: CheckoutCart | undefined;
   city?: City | undefined;
   setCoffees: (coffees: Coffee[]) => void;
   setCities: (cities: City[]) => void;

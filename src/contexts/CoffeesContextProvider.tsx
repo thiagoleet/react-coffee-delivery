@@ -25,18 +25,8 @@ const initialState: CoffeesState = {
   cart: {
     items: [],
   },
-  checkout: {
-    cart: {
-      items: [],
-    },
-    zipCode: "",
-    address: "",
-    addressNumber: "",
-    neighborhood: "",
-    city: "",
-    state: "",
-    paymentMethod: "",
-  },
+  city: undefined,
+  checkout: undefined,
 };
 
 export function CoffeesContextProvider({
