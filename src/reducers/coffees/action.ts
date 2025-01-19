@@ -1,3 +1,4 @@
+import { Cart } from "@/models/Cart";
 import { City } from "@/models/City";
 import { Coffee } from "@/models/Coffee";
 
@@ -7,6 +8,7 @@ export enum ActionTypes {
   ADD_COFFEE_TO_CART = "ADD_COFFEE_TO_CART",
   REMOVE_COFFEE_FROM_CART = "REMOVE_COFFEE_FROM_CART",
   SELECT_CITY = "SELECT_CITY",
+  CREATE_CHECKOUT = "CREATE_CHECKOUT",
 }
 
 export interface CoffeesStateAction {
@@ -17,6 +19,7 @@ export interface CoffeesStateAction {
     quantity?: number;
     cities?: City[];
     city?: City;
+    cart?: Cart;
   };
 }
 
@@ -58,6 +61,15 @@ export function selectCityAction(city: City): CoffeesStateAction {
     type: ActionTypes.SELECT_CITY,
     payload: {
       city,
+    },
+  };
+}
+
+export function createCheckoutAction(cart: Cart): CoffeesStateAction {
+  return {
+    type: ActionTypes.CREATE_CHECKOUT,
+    payload: {
+      cart,
     },
   };
 }
